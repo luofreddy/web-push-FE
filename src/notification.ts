@@ -77,6 +77,9 @@ export class WebPushNotification {
 
     return navigator.serviceWorker.register('/sw.js')
     .then((registration) => {
+      return navigator.serviceWorker.ready;
+    })
+    .then((registration) => {
       return registration.pushManager.subscribe(subscribeOptions);
     })
     .then((pushSubscription) => {
